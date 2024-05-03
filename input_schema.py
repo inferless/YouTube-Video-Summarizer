@@ -1,8 +1,8 @@
 INPUT_SCHEMA = {
-    "prompt": {
+    "youtube_url": {
         'datatype': 'STRING',
         'required': True,
         'shape': [1],
-        'example': ["There is a fine house in the forest"]
+        'example': ["https://www.youtube.com/watch?v=P127jhj-8-Y"]
     }
 }
