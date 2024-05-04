@@ -1,6 +1,9 @@
-# Llama3
-Llama3 is a LLM released by Meta. In this template we will import Llama3 on Inferless.
+# YouTube-Video-Summarizer
+- This tutorial will walk you through creating a YouTube video summarizer application using cutting-edge serverless technologies. You’ll learn how to extract summaries from YouTube URLs by harnessing the power of the Llama-3 8B model.
+## Architecture
+<img width="1339" alt="image" src="https://github.com/inferless/YouTube-Video-Summarizer/assets/150957746/b375a194-67c1-4c5c-b064-f1247c4c5b4c">
 
+---
 ## Prerequisites
 - **Git**. You would need git installed on your system if you wish to customize the repo after forking.
 - **Python>=3.8**. You would need Python to customize the code in the app.py according to your needs.
