@@ -39,8 +39,16 @@ Open the `app.py` file. This contains the main code for inference. It has three 
 **Infer** - This function is where the inference happens. The argument to this function `inputs`, is a dictionary containing all the input parameters. The keys are the same as the name given in inputs. Refer to [input](#input) for more.
 
 ```python
-def infer(self, inputs):
-    prompt = inputs["prompt"]
+    def infer(self, inputs):
+        youtube_url = inputs["youtube_url"]
+        transcript = self.get_transcription(youtube_url)
+        trimmed_text = self.tokenizer.decode((self.tokenizer.encode(transcript)[:7900]),skip_special_tokens=True)
+        format_text = self.format_template(trimmed_text)
+        text = self.tokenizer.apply_chat_template(format_text,tokenize=False,add_generation_prompt=True)
+        result = self.llm.generate(text, self.sampling_params)
+        result_output = [output.outputs[0].text for output in result]
+        
+        return {"generated_summary": result_output[0]}
 ```
 
 **Finalize** - This function is used to perform any cleanup activity for example you can unload the model from the gpu by setting `self.pipe = None`.
