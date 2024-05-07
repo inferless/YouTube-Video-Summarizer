@@ -54,13 +54,10 @@ class InferlessPythonModel:
         transcript = self.get_transcription(youtube_url)
         trimmed_text = self.tokenizer.decode((self.tokenizer.encode(transcript)[:7900]),skip_special_tokens=True)
         format_text = self.format_template(trimmed_text)
-        print("---"*100,format_text)
         text = self.tokenizer.apply_chat_template(format_text,tokenize=False,add_generation_prompt=True)
-        print("---"*100,text)
         result = self.llm.generate(text, self.sampling_params)
         
         result_output = [output.outputs[0].text for output in result]
-        print("---"*100,result_output[0])
         
         return {"generated_summary": result_output[0]}
 
